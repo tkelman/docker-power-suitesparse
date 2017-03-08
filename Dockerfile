@@ -13,13 +13,10 @@ ADD build.sh .
 ENV CC powerpc64le-linux-gnu-gcc
 RUN dpkg --add-architecture ppc64el && \
 apt-get update && \
-apt-get install -y --no-install-recommends qemu-user creduce \
+apt-get install -y --no-install-recommends qemu-user creduce libopenblas-base:ppc64el \
 libc6:ppc64el libz-dev:ppc64el curl ca-certificates crossbuild-essential-ppc64el && \
-mkdir -p ../usr/lib && cp /usr/powerpc64le-linux-gnu/lib/* ../usr/lib && \
-curl -L https://s3.amazonaws.com/julialang/bin/linux/ppc64le/0.6/julia-0.6.0-pre.alpha-linux-ppc64le.tar.gz | \
-tar -xzf - && cp julia-*/lib/julia/* ../usr/lib && rm -rf julia-* && \
-./build.sh && rm mwe-O2 mwe-O3
+./build.sh && mv SuiteSparse/*.i . && rm -rf mwe-O2 mwe-O3 SuiteSparse *.tar.gz
 ADD test.sh .
-RUN creduce --debug --timing test.sh SuiteSparse/*.i
+RUN creduce --debug --timing test.sh *.i
 #RUN qemu-ppc64le ./mwe-O2 && echo $? && \
 #qemu-ppc64le ./mwe-O3 && echo $?
