@@ -6,30 +6,6 @@ rm -rf SuiteSparse mwe
 tar -xzf SuiteSparse-4.4.5.tar.gz
 #make -C SuiteSparse library
 cd SuiteSparse
-gcc -O3 -fexceptions -fPIC -IAMD/Include -ISuiteSparse_config -DDLONG -c AMD/Source/amd_aat.c -o amd_l_aat.o
-gcc -O3 -fexceptions -fPIC -IAMD/Include -ISuiteSparse_config -DDLONG -c AMD/Source/amd_2.c -o amd_l_2.o
-gcc -O3 -fexceptions -fPIC -IAMD/Include -ISuiteSparse_config -DDLONG -c AMD/Source/amd_postorder.c -o amd_l_postorder.o
-gcc -O3 -fexceptions -fPIC -IAMD/Include -ISuiteSparse_config -DDLONG -c AMD/Source/amd_post_tree.c -o amd_l_post_tree.o
-gcc -O3 -fexceptions -fPIC -IAMD/Include -ISuiteSparse_config -DDLONG -c AMD/Source/amd_defaults.c -o amd_l_defaults.o
-gcc -O3 -fexceptions -fPIC -IAMD/Include -ISuiteSparse_config -DDLONG -c AMD/Source/amd_valid.c -o amd_l_valid.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Core/cholmod_aat.c -o cholmod_l_aat.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Core/cholmod_band.c -o cholmod_l_band.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Core/cholmod_change_factor.c -o cholmod_l_change_factor.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Core/cholmod_common.c -o cholmod_l_common.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Core/cholmod_copy.c -o cholmod_l_copy.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Core/cholmod_error.c -o cholmod_l_error.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Core/cholmod_factor.c -o cholmod_l_factor.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Core/cholmod_memory.c -o cholmod_l_memory.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Core/cholmod_sparse.c -o cholmod_l_sparse.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Core/cholmod_transpose.c -o cholmod_l_transpose.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Check/cholmod_check.c -o cholmod_l_check.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Cholesky/cholmod_amd.c -o cholmod_l_amd.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Cholesky/cholmod_analyze.c -o cholmod_l_analyze.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Cholesky/cholmod_colamd.c -o cholmod_l_colamd.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Cholesky/cholmod_etree.c -o cholmod_l_etree.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Cholesky/cholmod_postorder.c -o cholmod_l_postorder.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Cholesky/cholmod_rowcolcounts.c -o cholmod_l_rowcolcounts.o
-gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -IAMD/Include -IAMD/Source -ICOLAMD/Include -ICCOLAMD/Include -ICAMD/Include -ICHOLMOD/Include -ISuiteSparse_config CHOLMOD/Supernodal/cholmod_super_symbolic.c -o cholmod_l_super_symbolic.o
 gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_analyze.c -o umf_l_analyze.o
 gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_apply_order.c -o umf_l_apply_order.o
 gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_colamd.c -o umf_l_colamd.o
@@ -79,11 +55,31 @@ gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -IS
 gcc -O3 -o ../mwe ../mwe.c \
 -fexceptions -fPIC SuiteSparse_config/SuiteSparse_config.c \
 -ICOLAMD/Include -ISuiteSparse_config COLAMD/Source/colamd.c -DDLONG \
-amd_l_aat.o amd_l_2.o amd_l_postorder.o amd_l_post_tree.o amd_l_defaults.o amd_l_valid.o \
-cholmod_l_aat.o cholmod_l_band.o cholmod_l_change_factor.o cholmod_l_common.o cholmod_l_copy.o \
-cholmod_l_error.o cholmod_l_factor.o cholmod_l_memory.o cholmod_l_sparse.o cholmod_l_transpose.o \
-cholmod_l_check.o cholmod_l_amd.o cholmod_l_analyze.o cholmod_l_colamd.o cholmod_l_etree.o \
-cholmod_l_postorder.o cholmod_l_rowcolcounts.o cholmod_l_super_symbolic.o \
+-IAMD/Include AMD/Source/amd_aat.c \
+AMD/Source/amd_2.c \
+AMD/Source/amd_postorder.c \
+AMD/Source/amd_post_tree.c \
+AMD/Source/amd_defaults.c \
+AMD/Source/amd_valid.c \
+-DNPARTITION -IAMD/Source -ICHOLMOD/Include \
+CHOLMOD/Core/cholmod_aat.c \
+CHOLMOD/Core/cholmod_band.c \
+CHOLMOD/Core/cholmod_change_factor.c \
+CHOLMOD/Core/cholmod_common.c \
+CHOLMOD/Core/cholmod_copy.c \
+CHOLMOD/Core/cholmod_error.c \
+CHOLMOD/Core/cholmod_factor.c \
+CHOLMOD/Core/cholmod_memory.c \
+CHOLMOD/Core/cholmod_sparse.c \
+CHOLMOD/Core/cholmod_transpose.c \
+CHOLMOD/Check/cholmod_check.c \
+CHOLMOD/Cholesky/cholmod_amd.c \
+CHOLMOD/Cholesky/cholmod_analyze.c \
+CHOLMOD/Cholesky/cholmod_colamd.c \
+CHOLMOD/Cholesky/cholmod_etree.c \
+CHOLMOD/Cholesky/cholmod_postorder.c \
+CHOLMOD/Cholesky/cholmod_rowcolcounts.c \
+CHOLMOD/Supernodal/cholmod_super_symbolic.c \
 umf_l_analyze.o umf_l_apply_order.o umf_l_colamd.o umf_l_free.o umf_l_fsize.o umf_l_is_permutation.o umf_l_malloc.o umf_l_realloc.o \
 umf_l_singletons.o umf_l_cholmod.o umfpack_gn_tictoc.o \
 umf_zl_assemble_fixq.o umf_zl_store_lu_drop.o umf_zl_assemble.o umf_zl_blas3_update.o umf_zl_build_tuples.o umf_zl_create_element.o \
