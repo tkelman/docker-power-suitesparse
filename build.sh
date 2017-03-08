@@ -85,9 +85,7 @@ $CC -save-temps -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Inc
 mv umfpack_qsymbolic.i umfpack_zl_qsymbolic.i
 $CC -save-temps -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umfpack_symbolic.c -o umfpack_zl_symbolic.o
 mv umfpack_symbolic.i umfpack_zl_symbolic.i
-rm -f *.o *.s
-for opt in O2 O3; do
-$CC -$opt -o ../mwe-$opt ../mwe.c \
+$CC -save-temps -c \
 -fexceptions -fPIC SuiteSparse_config/SuiteSparse_config.c \
 -ICOLAMD/Include -ISuiteSparse_config COLAMD/Source/colamd.c -DDLONG \
 -IAMD/Include AMD/Source/amd_aat.c \
@@ -126,13 +124,11 @@ UMFPACK/Source/umf_malloc.c \
 UMFPACK/Source/umf_realloc.c \
 UMFPACK/Source/umf_singletons.c \
 UMFPACK/Source/umf_cholmod.c \
-UMFPACK/Source/umfpack_tictoc.c \
-umf_zl_assemble_fixq.i umf_zl_store_lu_drop.i umf_zl_assemble.i umf_zl_blas3_update.i umf_zl_build_tuples.i umf_zl_create_element.i \
-umf_zl_extend_front.i umf_zl_garbage_collection.i umf_zl_get_memory.i umf_zl_init_front.i umf_zl_kernel.i umf_zl_kernel_init.i umf_zl_kernel_wrapup.i umf_zl_local_search.i umf_zl_mem_alloc_element.i umf_zl_mem_alloc_head_block.i umf_zl_mem_alloc_tail_block.i umf_zl_mem_free_tail_block.i umf_zl_mem_init_memoryspace.i \
-umf_zl_row_search.i umf_zl_scale_column.i umf_zl_set_stats.i umf_zl_symbolic_usage.i umf_zl_transpose.i umf_zl_tuple_lengths.i \
-umf_zl_valid_symbolic.i umf_zl_grow_front.i umf_zl_start_front.i umf_zl_store_lu.i umf_zl_scale.i \
-umfpack_zl_free_numeric.i umfpack_zl_free_symbolic.i umfpack_zl_numeric.i umfpack_zl_qsymbolic.i umfpack_zl_symbolic.i \
--lm $BLAS
+UMFPACK/Source/umfpack_tictoc.c
+rm -f *.o *.s
+for opt in O2 O3; do
+$CC -$opt -o ../mwe-$opt ../mwe.c \
+-fexceptions -fPIC *.i -lm $BLAS
 #../blas/lsame.c ../blas/zgemm.c ../blas/zgemv.c ../blas/zgeru.c \
 #../blas/ztrsm.c ../blas/ztrsv.c ../blas/xerbla.c \
 #-I../libf2c ../libf2c/close.c ../libf2c/d_cnjg.c ../libf2c/endfile.c \
