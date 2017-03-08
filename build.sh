@@ -1,6 +1,8 @@
 #!/bin/bash -ex
-curl -LO http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.4.5.tar.gz
-rm -rf SuiteSparse
+if ! [ -e SuiteSparse-4.4.5.tar.gz ]; then
+  curl -LO http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.4.5.tar.gz
+fi
+rm -rf SuiteSparse mwe
 tar -xzf SuiteSparse-4.4.5.tar.gz
 #make -C SuiteSparse library
 cd SuiteSparse/SuiteSparse_config/xerbla
@@ -864,25 +866,10 @@ g++ -O3 -fexceptions -fPIC  -DNPARTITION -I../../CHOLMOD/Include -I../../SuiteSp
 g++ -O3 -fexceptions -fPIC  -DNPARTITION -I../../CHOLMOD/Include -I../../SuiteSparse_config -I../Include -c ../Source/spqr_type.cpp
 g++ -O3 -fexceptions -fPIC  -DNPARTITION -I../../CHOLMOD/Include -I../../SuiteSparse_config -I../Include -c ../Source/spqr_tol.cpp
 ar rs  libspqr.a spqr_rmap.o SuiteSparseQR_C.o SuiteSparseQR_expert.o spqr_parallel.o spqr_kernel.o spqr_analyze.o spqr_assemble.o spqr_cpack.o spqr_csize.o spqr_fcsize.o spqr_debug.o spqr_front.o spqr_factorize.o spqr_freenum.o spqr_freesym.o spqr_freefac.o spqr_fsize.o spqr_maxcolnorm.o spqr_rconvert.o spqr_rcount.o spqr_rhpack.o spqr_rsolve.o spqr_stranspose1.o spqr_stranspose2.o spqr_hpinv.o spqr_1fixed.o spqr_1colamd.o SuiteSparseQR.o spqr_1factor.o spqr_cumsum.o spqr_shift.o spqr_happly.o spqr_panel.o spqr_happly_work.o SuiteSparseQR_qmult.o spqr_trapezoidal.o spqr_larftb.o spqr_append.o spqr_type.o spqr_tol.o
-#mkdir -p scratch/SuiteSparse-4.4.5/lib && \
-#	cd scratch/SuiteSparse-4.4.5/lib && \
-#	rm -f *.a && \
-#	cp -f `find .. -name libamd.a -o -name libcolamd.a -o -name libcamd.a -o -name libccolamd.a -o -name libcholmod.a -o -name libumfpack.a -o -name libsuitesparseconfig.a -o -name libspqr.a 2>/dev/null` . && \
-#	gcc  -shared -Wl,--whole-archive libsuitesparseconfig.a -Wl,--no-whole-archive -o /home/tkelman/Julia/julia-0.6/usr/lib/libsuitesparseconfig.so && \
-#	true -ignorelibsuitesparseconfig.so /home/tkelman/Julia/julia-0.6/usr/lib/libsuitesparseconfig.so && \
-#	gcc  -shared -Wl,--whole-archive libamd.a -Wl,--no-whole-archive -o /home/tkelman/Julia/julia-0.6/usr/lib/libamd.so  -L/home/tkelman/Julia/julia-0.6/usr/lib -lsuitesparseconfig -Wl,-rpath,'$ORIGIN' -Wl,-z,origin && \
-#	true -ignorelibamd.so /home/tkelman/Julia/julia-0.6/usr/lib/libamd.so && \
-#	gcc  -shared -Wl,--whole-archive libcolamd.a -Wl,--no-whole-archive -o /home/tkelman/Julia/julia-0.6/usr/lib/libcolamd.so  -L/home/tkelman/Julia/julia-0.6/usr/lib -lsuitesparseconfig -Wl,-rpath,'$ORIGIN' -Wl,-z,origin && \
-#	true -ignorelibcolamd.so /home/tkelman/Julia/julia-0.6/usr/lib/libcolamd.so && \
-#	gcc  -shared -Wl,--whole-archive libcamd.a -Wl,--no-whole-archive -o /home/tkelman/Julia/julia-0.6/usr/lib/libcamd.so  -L/home/tkelman/Julia/julia-0.6/usr/lib -lsuitesparseconfig -Wl,-rpath,'$ORIGIN' -Wl,-z,origin && \
-#	true -ignorelibcamd.so /home/tkelman/Julia/julia-0.6/usr/lib/libcamd.so && \
-#	gcc  -shared -Wl,--whole-archive libccolamd.a -Wl,--no-whole-archive -o /home/tkelman/Julia/julia-0.6/usr/lib/libccolamd.so  -L/home/tkelman/Julia/julia-0.6/usr/lib -lsuitesparseconfig -Wl,-rpath,'$ORIGIN' -Wl,-z,origin && \
-#	true -ignorelibccolamd.so /home/tkelman/Julia/julia-0.6/usr/lib/libccolamd.so && \
-#	g++  -shared -Wl,--whole-archive libcholmod.a -Wl,--no-whole-archive -o /home/tkelman/Julia/julia-0.6/usr/lib/libcholmod.so  -L/home/tkelman/Julia/julia-0.6/usr/lib -lcolamd -lamd -lcamd -lccolamd -lsuitesparseconfig -llapack -lblas -Wl,-rpath,'$ORIGIN' -Wl,-z,origin && \
-#	true -ignorelibcholmod.so /home/tkelman/Julia/julia-0.6/usr/lib/libcholmod.so && \
-#	g++  -shared -Wl,--whole-archive libumfpack.a -Wl,--no-whole-archive -o /home/tkelman/Julia/julia-0.6/usr/lib/libumfpack.so  -L/home/tkelman/Julia/julia-0.6/usr/lib -lcholmod -lcolamd -lamd -lsuitesparseconfig -lblas -Wl,-rpath,'$ORIGIN' -Wl,-z,origin && \
-#	true -ignorelibumfpack.so /home/tkelman/Julia/julia-0.6/usr/lib/libumfpack.so && \
-#	g++  -shared -Wl,--whole-archive libspqr.a -Wl,--no-whole-archive -o /home/tkelman/Julia/julia-0.6/usr/lib/libspqr.so  -L/home/tkelman/Julia/julia-0.6/usr/lib -lcholmod -lcolamd -lamd -lsuitesparseconfig -llapack -lblas -Wl,-rpath,'$ORIGIN' -Wl,-z,origin && \
-#	true -ignorelibspqr.so /home/tkelman/Julia/julia-0.6/usr/lib/libspqr.so
 cd ../../..
-gcc -o mwe mwe.c ~/Julia/julia-0.6/deps/scratch/SuiteSparse-4.4.5/UMFPACK/Lib/libumfpack.a ~/Julia/julia-0.6/deps/scratch/SuiteSparse-4.4.5/CHOLMOD/Lib/libcholmod.a ~/Julia/julia-0.6/deps/scratch/SuiteSparse-4.4.5/AMD/Lib/libamd.a ~/Julia/julia-0.6/deps/scratch/SuiteSparse-4.4.5/COLAMD/Lib/libcolamd.a ~/Julia/julia-0.6/deps/scratch/SuiteSparse-4.4.5/SuiteSparse_config/libsuitesparseconfig.a /usr/lib/libblas.so.3 -lm
+gcc -o mwe mwe.c SuiteSparse/UMFPACK/Lib/libumfpack.a \
+  SuiteSparse/CHOLMOD/Lib/libcholmod.a \
+  SuiteSparse/AMD/Lib/libamd.a \
+  SuiteSparse/COLAMD/Lib/libcolamd.a \
+  SuiteSparse/SuiteSparse_config/libsuitesparseconfig.a \
+  /usr/lib/libblas.so.3 -lm
