@@ -34,42 +34,6 @@ gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ..
 gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/amd_valid.c -o amd_l_valid.o
 gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/amd_preprocess.c -o amd_l_preprocess.o
 ar rs libamd.a amd_i_aat.o amd_i_1.o amd_i_2.o amd_i_dump.o amd_i_postorder.o amd_i_post_tree.o amd_i_defaults.o amd_i_order.o amd_i_control.o amd_i_info.o amd_i_valid.o amd_i_preprocess.o amd_l_aat.o amd_l_1.o amd_l_2.o amd_l_dump.o amd_l_postorder.o amd_l_post_tree.o amd_l_defaults.o amd_l_order.o amd_l_control.o amd_l_info.o amd_l_valid.o amd_l_preprocess.o
-cd ../../BTF/Lib
-gcc -O3 -fexceptions -fPIC -c -I../Include -I../../SuiteSparse_config ../Source/btf_order.c -o btf_order.o
-gcc -O3 -fexceptions -fPIC -c -I../Include -I../../SuiteSparse_config ../Source/btf_maxtrans.c -o btf_maxtrans.o
-gcc -O3 -fexceptions -fPIC -c -I../Include -I../../SuiteSparse_config ../Source/btf_strongcomp.c -o btf_strongcomp.o
-gcc -O3 -fexceptions -fPIC -c -I../Include -I../../SuiteSparse_config -DDLONG ../Source/btf_order.c -o btf_l_order.o
-gcc -O3 -fexceptions -fPIC -c -I../Include -I../../SuiteSparse_config -DDLONG ../Source/btf_maxtrans.c -o btf_l_maxtrans.o
-gcc -O3 -fexceptions -fPIC -c -I../Include -I../../SuiteSparse_config -DDLONG ../Source/btf_strongcomp.c -o btf_l_strongcomp.o
-ar rs  libbtf.a btf_order.o btf_maxtrans.o btf_strongcomp.o btf_l_order.o btf_l_maxtrans.o btf_l_strongcomp.o
-cd ../../CAMD/Lib
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDINT -c ../Source/camd_aat.c -o camd_i_aat.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDINT -c ../Source/camd_1.c -o camd_i_1.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDINT -c ../Source/camd_2.c -o camd_i_2.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDINT -c ../Source/camd_dump.c -o camd_i_dump.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDINT -c ../Source/camd_postorder.c -o camd_i_postorder.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDINT -c ../Source/camd_defaults.c -o camd_i_defaults.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDINT -c ../Source/camd_order.c -o camd_i_order.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDINT -c ../Source/camd_control.c -o camd_i_control.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDINT -c ../Source/camd_info.c -o camd_i_info.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDINT -c ../Source/camd_valid.c -o camd_i_valid.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDINT -c ../Source/camd_preprocess.c -o camd_i_preprocess.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/camd_aat.c -o camd_l_aat.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/camd_1.c -o camd_l_1.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/camd_2.c -o camd_l_2.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/camd_dump.c -o camd_l_dump.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/camd_postorder.c -o camd_l_postorder.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/camd_defaults.c -o camd_l_defaults.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/camd_order.c -o camd_l_order.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/camd_control.c -o camd_l_control.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/camd_info.c -o camd_l_info.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/camd_valid.c -o camd_l_valid.o
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -DDLONG -c ../Source/camd_preprocess.c -o camd_l_preprocess.o
-ar rs  libcamd.a camd_i_aat.o camd_i_1.o camd_i_2.o camd_i_dump.o camd_i_postorder.o camd_i_defaults.o camd_i_order.o camd_i_control.o camd_i_info.o camd_i_valid.o camd_i_preprocess.o camd_l_aat.o camd_l_1.o camd_l_2.o camd_l_dump.o camd_l_postorder.o camd_l_defaults.o camd_l_order.o camd_l_control.o camd_l_info.o camd_l_valid.o camd_l_preprocess.o
-cd ../../CCOLAMD/Lib
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -c ../Source/ccolamd.c
-gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -c ../Source/ccolamd.c -DDLONG -o ccolamd_l.o
-ar rs  libccolamd.a ccolamd.o ccolamd_l.o
 cd ../../COLAMD/Lib
 gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -c ../Source/colamd.c
 gcc -O3 -fexceptions -fPIC -I../Include -I../../SuiteSparse_config -c ../Source/colamd.c -DDLONG -o colamd_l.o
@@ -176,70 +140,6 @@ gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -I../../AMD/Include -I../../
 gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -I../../AMD/Include -I../../AMD/Source -I../../COLAMD/Include -I../../CCOLAMD/Include -I../../CAMD/Include -I../Include -I../../SuiteSparse_config ../Partition/cholmod_nesdis.c -o cholmod_l_nesdis.o
 gcc -O3 -fexceptions -fPIC  -DNPARTITION -DDLONG -c -I../../AMD/Include -I../../AMD/Source -I../../COLAMD/Include -I../../CCOLAMD/Include -I../../CAMD/Include -I../Include -I../../SuiteSparse_config ../Partition/cholmod_camd.c -o cholmod_l_camd.o
 ar rs  libcholmod.a cholmod_aat.o cholmod_add.o cholmod_band.o cholmod_change_factor.o cholmod_common.o cholmod_complex.o cholmod_copy.o cholmod_dense.o cholmod_error.o cholmod_factor.o cholmod_memory.o cholmod_sparse.o cholmod_transpose.o cholmod_triplet.o cholmod_version.o cholmod_check.o cholmod_read.o cholmod_write.o cholmod_amd.o cholmod_analyze.o cholmod_colamd.o cholmod_etree.o cholmod_factorize.o cholmod_postorder.o cholmod_rcond.o cholmod_resymbol.o cholmod_rowcolcounts.o cholmod_rowfac.o cholmod_solve.o cholmod_spsolve.o cholmod_drop.o cholmod_horzcat.o cholmod_norm.o cholmod_scale.o cholmod_sdmult.o cholmod_ssmult.o cholmod_submatrix.o cholmod_vertcat.o cholmod_symmetry.o cholmod_rowadd.o cholmod_rowdel.o cholmod_updown.o cholmod_super_numeric.o cholmod_super_solve.o cholmod_super_symbolic.o  cholmod_ccolamd.o cholmod_csymamd.o cholmod_metis.o cholmod_nesdis.o cholmod_camd.o  cholmod_l_aat.o cholmod_l_add.o cholmod_l_band.o cholmod_l_change_factor.o cholmod_l_common.o cholmod_l_complex.o cholmod_l_copy.o cholmod_l_dense.o cholmod_l_error.o cholmod_l_factor.o cholmod_l_memory.o cholmod_l_sparse.o cholmod_l_transpose.o cholmod_l_triplet.o cholmod_l_version.o cholmod_l_check.o cholmod_l_read.o cholmod_l_write.o cholmod_l_amd.o cholmod_l_analyze.o cholmod_l_colamd.o cholmod_l_etree.o cholmod_l_factorize.o cholmod_l_postorder.o cholmod_l_rcond.o cholmod_l_resymbol.o cholmod_l_rowcolcounts.o cholmod_l_rowfac.o cholmod_l_solve.o cholmod_l_spsolve.o cholmod_l_drop.o cholmod_l_horzcat.o cholmod_l_norm.o cholmod_l_scale.o cholmod_l_sdmult.o cholmod_l_ssmult.o cholmod_l_submatrix.o cholmod_l_vertcat.o cholmod_l_symmetry.o cholmod_l_rowadd.o cholmod_l_rowdel.o cholmod_l_updown.o cholmod_l_super_numeric.o cholmod_l_super_solve.o cholmod_l_super_symbolic.o cholmod_l_ccolamd.o cholmod_l_csymamd.o cholmod_l_metis.o cholmod_l_nesdis.o cholmod_l_camd.o 
-cd ../../KLU/Lib
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_free_symbolic.c -o klu_free_symbolic.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_defaults.c -o klu_defaults.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_analyze_given.c -o klu_analyze_given.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_analyze.c -o klu_analyze.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_memory.c -o klu_memory.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_free_symbolic.c -o klu_l_free_symbolic.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_defaults.c -o klu_l_defaults.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_analyze_given.c -o klu_l_analyze_given.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_analyze.c -o klu_l_analyze.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_memory.c -o klu_l_memory.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu.c -o klu_d.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_kernel.c -o klu_d_kernel.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_dump.c -o klu_d_dump.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_factor.c -o klu_d_factor.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_free_numeric.c -o klu_d_free_numeric.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_solve.c -o klu_d_solve.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_scale.c -o klu_d_scale.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_refactor.c -o klu_d_refactor.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_tsolve.c -o klu_d_tsolve.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_diagnostics.c -o klu_d_diagnostics.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_sort.c -o klu_d_sort.o
-gcc -O3 -fexceptions -fPIC -c -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_extract.c -o klu_d_extract.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu.c -o klu_z.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_kernel.c -o klu_z_kernel.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_dump.c -o klu_z_dump.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_factor.c -o klu_z_factor.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_free_numeric.c -o klu_z_free_numeric.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_solve.c -o klu_z_solve.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_scale.c -o klu_z_scale.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_refactor.c -o klu_z_refactor.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_tsolve.c -o klu_z_tsolve.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_diagnostics.c -o klu_z_diagnostics.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_sort.c -o klu_z_sort.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_extract.c -o klu_z_extract.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu.c -o klu_l.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_kernel.c -o klu_l_kernel.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_dump.c -o klu_l_dump.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_factor.c -o klu_l_factor.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_free_numeric.c -o klu_l_free_numeric.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_solve.c -o klu_l_solve.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_scale.c -o klu_l_scale.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_refactor.c -o klu_l_refactor.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_tsolve.c -o klu_l_tsolve.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_diagnostics.c -o klu_l_diagnostics.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_sort.c -o klu_l_sort.o
-gcc -O3 -fexceptions -fPIC -c -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_extract.c -o klu_l_extract.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu.c -o klu_zl.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_kernel.c -o klu_zl_kernel.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_dump.c -o klu_zl_dump.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_factor.c -o klu_zl_factor.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_free_numeric.c -o klu_zl_free_numeric.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_solve.c -o klu_zl_solve.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_scale.c -o klu_zl_scale.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_refactor.c -o klu_zl_refactor.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_tsolve.c -o klu_zl_tsolve.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_diagnostics.c -o klu_zl_diagnostics.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_sort.c -o klu_zl_sort.o
-gcc -O3 -fexceptions -fPIC -c -DCOMPLEX -DDLONG -I../../AMD/Include -I../../COLAMD/Include -I../../BTF/Include -I../Include -I../../SuiteSparse_config ../Source/klu_extract.c -o klu_zl_extract.o
-ar rs  libklu.a klu_free_symbolic.o klu_defaults.o klu_analyze_given.o klu_analyze.o klu_memory.o klu_l_free_symbolic.o klu_l_defaults.o klu_l_analyze_given.o klu_l_analyze.o klu_l_memory.o klu_d.o klu_d_kernel.o klu_d_dump.o klu_d_factor.o klu_d_free_numeric.o klu_d_solve.o klu_d_scale.o klu_d_refactor.o klu_d_tsolve.o klu_d_diagnostics.o klu_d_sort.o klu_d_extract.o klu_z.o klu_z_kernel.o klu_z_dump.o klu_z_factor.o klu_z_free_numeric.o klu_z_solve.o klu_z_scale.o klu_z_refactor.o klu_z_tsolve.o klu_z_diagnostics.o klu_z_sort.o klu_z_extract.o klu_l.o klu_l_kernel.o klu_l_dump.o klu_l_factor.o klu_l_free_numeric.o klu_l_solve.o klu_l_scale.o klu_l_refactor.o klu_l_tsolve.o klu_l_diagnostics.o klu_l_sort.o klu_l_extract.o klu_zl.o klu_zl_kernel.o klu_zl_dump.o klu_zl_factor.o klu_zl_free_numeric.o klu_zl_solve.o klu_zl_scale.o klu_zl_refactor.o klu_zl_tsolve.o klu_zl_diagnostics.o klu_zl_sort.o klu_zl_extract.o
-cd ../../LDL/Lib
-gcc -O3 -fexceptions -fPIC -I../../SuiteSparse_config -I../Include -c ../Source/ldl.c -o ldl.o
-gcc -O3 -fexceptions -fPIC -I../../SuiteSparse_config -I../Include -DLDL_LONG -c ../Source/ldl.c -o ldll.o
-ar rs  libldl.a ldl.o ldll.o
 cd ../../UMFPACK/Lib
 gcc -O3 -fexceptions -fPIC  -I../Include -I../Source -I../../AMD/Include -I../../SuiteSparse_config -I../../CHOLMOD/Include -DDLONG -c ../Source/umf_analyze.c -o umf_l_analyze.o
 gcc -O3 -fexceptions -fPIC  -I../Include -I../Source -I../../AMD/Include -I../../SuiteSparse_config -I../../CHOLMOD/Include -DDLONG -c ../Source/umf_apply_order.c -o umf_l_apply_order.o
