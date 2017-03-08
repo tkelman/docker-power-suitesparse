@@ -6,6 +6,11 @@ rm -rf SuiteSparse mwe mwe-O2 mwe-O3
 tar -xzf SuiteSparse-4.4.5.tar.gz
 #make -C SuiteSparse library
 cd SuiteSparse
+if [ -e /usr/lib/libblas.so.3 ]; then
+BLAS=/usr/lib/libblas.so.3
+else
+BLAS="-L../../usr/lib -lopenblas -Wl,-rpath=$PWD/../../usr/lib"
+fi
 for opt in O2 O3; do
 rm -f *.o
 gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -DFIXQ -c UMFPACK/Source/umf_assemble.c -o umf_zl_assemble_fixq.o
@@ -88,9 +93,10 @@ umf_zl_extend_front.o umf_zl_garbage_collection.o umf_zl_get_memory.o umf_zl_ini
 umf_zl_row_search.o umf_zl_scale_column.o umf_zl_set_stats.o umf_zl_symbolic_usage.o umf_zl_transpose.o umf_zl_tuple_lengths.o \
 umf_zl_valid_symbolic.o umf_zl_grow_front.o umf_zl_start_front.o umf_zl_store_lu.o umf_zl_scale.o \
 umfpack_zl_free_numeric.o umfpack_zl_free_symbolic.o umfpack_zl_numeric.o umfpack_zl_qsymbolic.o umfpack_zl_symbolic.o \
--lm ../blas/lsame.c ../blas/zgemm.c ../blas/zgemv.c ../blas/zgeru.c \
-../blas/ztrsm.c ../blas/ztrsv.c ../blas/xerbla.c \
--I../libf2c ../libf2c/close.c ../libf2c/d_cnjg.c ../libf2c/endfile.c \
-../libf2c/err.c ../libf2c/open.c ../libf2c/s_stop.c ../libf2c/sig_die.c \
-../libf2c/util.c ../libf2c/z_div.c
+-lm $BLAS
+#../blas/lsame.c ../blas/zgemm.c ../blas/zgemv.c ../blas/zgeru.c \
+#../blas/ztrsm.c ../blas/ztrsv.c ../blas/xerbla.c \
+#-I../libf2c ../libf2c/close.c ../libf2c/d_cnjg.c ../libf2c/endfile.c \
+#../libf2c/err.c ../libf2c/open.c ../libf2c/s_stop.c ../libf2c/sig_die.c \
+#../libf2c/util.c ../libf2c/z_div.c
 done
