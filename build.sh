@@ -2,46 +2,48 @@
 if ! [ -e SuiteSparse-4.4.5.tar.gz ]; then
   curl -LO http://faculty.cse.tamu.edu/davis/SuiteSparse/SuiteSparse-4.4.5.tar.gz
 fi
-rm -rf SuiteSparse mwe
+rm -rf SuiteSparse mwe mwe-O2 mwe-O3
 tar -xzf SuiteSparse-4.4.5.tar.gz
 #make -C SuiteSparse library
 cd SuiteSparse
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -DFIXQ -c UMFPACK/Source/umf_assemble.c -o umf_zl_assemble_fixq.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -DDROP -c UMFPACK/Source/umf_store_lu.c -o umf_zl_store_lu_drop.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_assemble.c -o umf_zl_assemble.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_blas3_update.c -o umf_zl_blas3_update.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_build_tuples.c -o umf_zl_build_tuples.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_create_element.c -o umf_zl_create_element.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_extend_front.c -o umf_zl_extend_front.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_garbage_collection.c -o umf_zl_garbage_collection.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_get_memory.c -o umf_zl_get_memory.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_init_front.c -o umf_zl_init_front.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_kernel.c -o umf_zl_kernel.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_kernel_init.c -o umf_zl_kernel_init.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_kernel_wrapup.c -o umf_zl_kernel_wrapup.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_local_search.c -o umf_zl_local_search.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_mem_alloc_element.c -o umf_zl_mem_alloc_element.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_mem_alloc_head_block.c -o umf_zl_mem_alloc_head_block.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_mem_alloc_tail_block.c -o umf_zl_mem_alloc_tail_block.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_mem_free_tail_block.c -o umf_zl_mem_free_tail_block.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_mem_init_memoryspace.c -o umf_zl_mem_init_memoryspace.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_row_search.c -o umf_zl_row_search.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_scale_column.c -o umf_zl_scale_column.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_set_stats.c -o umf_zl_set_stats.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_symbolic_usage.c -o umf_zl_symbolic_usage.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_transpose.c -o umf_zl_transpose.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_tuple_lengths.c -o umf_zl_tuple_lengths.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_valid_symbolic.c -o umf_zl_valid_symbolic.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_grow_front.c -o umf_zl_grow_front.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_start_front.c -o umf_zl_start_front.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_store_lu.c -o umf_zl_store_lu.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_scale.c -o umf_zl_scale.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umfpack_free_numeric.c -o umfpack_zl_free_numeric.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umfpack_free_symbolic.c -o umfpack_zl_free_symbolic.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umfpack_numeric.c -o umfpack_zl_numeric.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umfpack_qsymbolic.c -o umfpack_zl_qsymbolic.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umfpack_symbolic.c -o umfpack_zl_symbolic.o
-gcc -O3 -o ../mwe ../mwe.c \
+for opt in O2 O3; do
+rm -f *.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -DFIXQ -c UMFPACK/Source/umf_assemble.c -o umf_zl_assemble_fixq.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -DDROP -c UMFPACK/Source/umf_store_lu.c -o umf_zl_store_lu_drop.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_assemble.c -o umf_zl_assemble.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_blas3_update.c -o umf_zl_blas3_update.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_build_tuples.c -o umf_zl_build_tuples.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_create_element.c -o umf_zl_create_element.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_extend_front.c -o umf_zl_extend_front.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_garbage_collection.c -o umf_zl_garbage_collection.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_get_memory.c -o umf_zl_get_memory.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_init_front.c -o umf_zl_init_front.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_kernel.c -o umf_zl_kernel.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_kernel_init.c -o umf_zl_kernel_init.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_kernel_wrapup.c -o umf_zl_kernel_wrapup.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_local_search.c -o umf_zl_local_search.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_mem_alloc_element.c -o umf_zl_mem_alloc_element.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_mem_alloc_head_block.c -o umf_zl_mem_alloc_head_block.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_mem_alloc_tail_block.c -o umf_zl_mem_alloc_tail_block.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_mem_free_tail_block.c -o umf_zl_mem_free_tail_block.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_mem_init_memoryspace.c -o umf_zl_mem_init_memoryspace.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_row_search.c -o umf_zl_row_search.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_scale_column.c -o umf_zl_scale_column.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_set_stats.c -o umf_zl_set_stats.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_symbolic_usage.c -o umf_zl_symbolic_usage.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_transpose.c -o umf_zl_transpose.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_tuple_lengths.c -o umf_zl_tuple_lengths.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_valid_symbolic.c -o umf_zl_valid_symbolic.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_grow_front.c -o umf_zl_grow_front.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_start_front.c -o umf_zl_start_front.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_store_lu.c -o umf_zl_store_lu.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_scale.c -o umf_zl_scale.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umfpack_free_numeric.c -o umfpack_zl_free_numeric.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umfpack_free_symbolic.c -o umfpack_zl_free_symbolic.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umfpack_numeric.c -o umfpack_zl_numeric.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umfpack_qsymbolic.c -o umfpack_zl_qsymbolic.o
+gcc -$opt -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umfpack_symbolic.c -o umfpack_zl_symbolic.o
+gcc -$opt -o ../mwe-$opt ../mwe.c \
 -fexceptions -fPIC SuiteSparse_config/SuiteSparse_config.c \
 -ICOLAMD/Include -ISuiteSparse_config COLAMD/Source/colamd.c -DDLONG \
 -IAMD/Include AMD/Source/amd_aat.c \
@@ -87,3 +89,4 @@ umf_zl_row_search.o umf_zl_scale_column.o umf_zl_set_stats.o umf_zl_symbolic_usa
 umf_zl_valid_symbolic.o umf_zl_grow_front.o umf_zl_start_front.o umf_zl_store_lu.o umf_zl_scale.o \
 umfpack_zl_free_numeric.o umfpack_zl_free_symbolic.o umfpack_zl_numeric.o umfpack_zl_qsymbolic.o umfpack_zl_symbolic.o \
 -lm -L../../usr/lib -lopenblas -Wl,-rpath=$PWD/../../usr/lib
+done
