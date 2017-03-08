@@ -6,17 +6,6 @@ rm -rf SuiteSparse mwe
 tar -xzf SuiteSparse-4.4.5.tar.gz
 #make -C SuiteSparse library
 cd SuiteSparse
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_analyze.c -o umf_l_analyze.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_apply_order.c -o umf_l_apply_order.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_colamd.c -o umf_l_colamd.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_free.c -o umf_l_free.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_fsize.c -o umf_l_fsize.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_is_permutation.c -o umf_l_is_permutation.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_malloc.c -o umf_l_malloc.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_realloc.c -o umf_l_realloc.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_singletons.c -o umf_l_singletons.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DDLONG -c UMFPACK/Source/umf_cholmod.c -o umf_l_cholmod.o
-gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -c UMFPACK/Source/umfpack_tictoc.c -o umfpack_gn_tictoc.o
 gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -DFIXQ -c UMFPACK/Source/umf_assemble.c -o umf_zl_assemble_fixq.o
 gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -DDROP -c UMFPACK/Source/umf_store_lu.c -o umf_zl_store_lu_drop.o
 gcc -O3 -fexceptions -fPIC  -IUMFPACK/Include -IUMFPACK/Source -IAMD/Include -ISuiteSparse_config -ICHOLMOD/Include -DZLONG -c UMFPACK/Source/umf_assemble.c -o umf_zl_assemble.o
@@ -80,8 +69,18 @@ CHOLMOD/Cholesky/cholmod_etree.c \
 CHOLMOD/Cholesky/cholmod_postorder.c \
 CHOLMOD/Cholesky/cholmod_rowcolcounts.c \
 CHOLMOD/Supernodal/cholmod_super_symbolic.c \
-umf_l_analyze.o umf_l_apply_order.o umf_l_colamd.o umf_l_free.o umf_l_fsize.o umf_l_is_permutation.o umf_l_malloc.o umf_l_realloc.o \
-umf_l_singletons.o umf_l_cholmod.o umfpack_gn_tictoc.o \
+-IUMFPACK/Include -IUMFPACK/Source \
+UMFPACK/Source/umf_analyze.c \
+UMFPACK/Source/umf_apply_order.c \
+UMFPACK/Source/umf_colamd.c \
+UMFPACK/Source/umf_free.c \
+UMFPACK/Source/umf_fsize.c \
+UMFPACK/Source/umf_is_permutation.c \
+UMFPACK/Source/umf_malloc.c \
+UMFPACK/Source/umf_realloc.c \
+UMFPACK/Source/umf_singletons.c \
+UMFPACK/Source/umf_cholmod.c \
+UMFPACK/Source/umfpack_tictoc.c \
 umf_zl_assemble_fixq.o umf_zl_store_lu_drop.o umf_zl_assemble.o umf_zl_blas3_update.o umf_zl_build_tuples.o umf_zl_create_element.o \
 umf_zl_extend_front.o umf_zl_garbage_collection.o umf_zl_get_memory.o umf_zl_init_front.o umf_zl_kernel.o umf_zl_kernel_init.o umf_zl_kernel_wrapup.o umf_zl_local_search.o umf_zl_mem_alloc_element.o umf_zl_mem_alloc_head_block.o umf_zl_mem_alloc_tail_block.o umf_zl_mem_free_tail_block.o umf_zl_mem_init_memoryspace.o \
 umf_zl_row_search.o umf_zl_scale_column.o umf_zl_set_stats.o umf_zl_symbolic_usage.o umf_zl_transpose.o umf_zl_tuple_lengths.o \
