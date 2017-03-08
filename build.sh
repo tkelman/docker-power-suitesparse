@@ -6,11 +6,6 @@ rm -rf SuiteSparse mwe mwe-O2 mwe-O3
 tar -xzf SuiteSparse-4.4.5.tar.gz
 #make -C SuiteSparse library
 cd SuiteSparse
-if [ -e /usr/lib/libblas.so.3 ]; then
-BLAS=/usr/lib/libblas.so.3
-else
-BLAS="-L../../usr/lib -lopenblas -Wl,-rpath=$PWD/../../usr/lib"
-fi
 if [ -z "$CC" ]; then
 CC=gcc
 fi
@@ -126,12 +121,12 @@ UMFPACK/Source/umf_singletons.c \
 UMFPACK/Source/umf_cholmod.c \
 UMFPACK/Source/umfpack_tictoc.c
 rm -f *.o *.s
+cp ../mwe.c mwe.i
+if [ -e /usr/lib/libblas.so.3 ]; then
+BLAS=/usr/lib/libblas.so.3
+else
+BLAS="-L../../usr/lib -lopenblas -Wl,-rpath=$PWD/../../usr/lib"
+fi
 for opt in O2 O3; do
-$CC -$opt -o ../mwe-$opt ../mwe.c \
--fexceptions -fPIC *.i -lm $BLAS
-#../blas/lsame.c ../blas/zgemm.c ../blas/zgemv.c ../blas/zgeru.c \
-#../blas/ztrsm.c ../blas/ztrsv.c ../blas/xerbla.c \
-#-I../libf2c ../libf2c/close.c ../libf2c/d_cnjg.c ../libf2c/endfile.c \
-#../libf2c/err.c ../libf2c/open.c ../libf2c/s_stop.c ../libf2c/sig_die.c \
-#../libf2c/util.c ../libf2c/z_div.c
+$CC -$opt -o ../mwe-$opt *.i -fexceptions -fPIC -lm $BLAS
 done
