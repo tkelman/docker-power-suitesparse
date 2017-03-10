@@ -6,9 +6,8 @@ ADD build.sh .
 ADD test.sh .
 RUN dpkg --add-architecture ppc64el && \
 apt-get update && \
-apt-get install -y --no-install-recommends qemu-user creduce libopenblas-base:ppc64el \
-libc6:ppc64el libz-dev:ppc64el curl ca-certificates crossbuild-essential-ppc64el && \
-./build.sh && mv SuiteSparse/*.i . && rm -rf mwe-O2 mwe-O3 SuiteSparse *.tar.gz
-RUN creduce --debug --timing test.sh *.i
-#RUN qemu-ppc64le ./mwe-O2 && echo $? && \
-#qemu-ppc64le ./mwe-O3 && echo $?
+apt-get install -y --no-install-recommends qemu-user creduce libopenblas-base \
+libc6:ppc64el build-essential curl ca-certificates crossbuild-essential-ppc64el && \
+cp /usr/lib/libopenblas* . && apt-get install -y libopenblas-base:ppc64el && \
+./build.sh && mv SuiteSparse/*.i . && rm -rf mwe-O2 mwe-O3 SuiteSparse *.tar.gz && \
+./test.sh && CFLAGS=-w creduce --n `nproc` --debug --timing test.sh *.i && ./test.sh
