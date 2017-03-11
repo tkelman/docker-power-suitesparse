@@ -10,4 +10,5 @@ apt-get install -y --no-install-recommends qemu-user creduce libopenblas-base \
 libc6:ppc64el build-essential curl ca-certificates crossbuild-essential-ppc64el && \
 cp /usr/lib/libopenblas* . && apt-get install -y libopenblas-base:ppc64el && \
 ./build.sh && mv SuiteSparse/*.i . && rm -rf mwe-O2 mwe-O3 SuiteSparse *.tar.gz && \
-./test.sh && CFLAGS=-w creduce --n `nproc` --debug --timing test.sh *.i && ./test.sh
+./test.sh && CFLAGS="-w -fno-diagnostics-show-caret" creduce --n `nproc` \
+--debug --timing test.sh *.i && ./test.sh
