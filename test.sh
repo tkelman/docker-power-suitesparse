@@ -4,4 +4,4 @@ timeout 20 ./mwe-O2-native
 $CC -O2 -o mwe-O2 *.i $CFLAGS -fexceptions -fPIC -lm /usr/lib/libblas.so.3
 timeout 20 qemu-ppc64le ./mwe-O2 2>/dev/null
 $CC -O2 -ftree-slp-vectorize -o mwe-O3 *.i $CFLAGS -fexceptions -fPIC -lm /usr/lib/libblas.so.3
-! timeout 20 qemu-ppc64le ./mwe-O3 2>/dev/null
+timeout 20 [ $(qemu-ppc64le ./mwe-O3 2>/dev/null; echo $?) = 139 ]
