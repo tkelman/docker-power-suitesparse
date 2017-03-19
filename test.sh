@@ -1,7 +1,11 @@
 #!/bin/bash -e
-gcc -O2 -o mwe-O2-native *.i $CFLAGS -fexceptions -fPIC -lm /home/test/libopenblas.so.0 -Wl,-rpath=/home/test
-timeout 20 ./mwe-O2-native
-$CC -O2 -o mwe-O2 *.i $CFLAGS -fexceptions -fPIC -lm /usr/lib/libblas.so.3
-timeout 20 qemu-ppc64le ./mwe-O2 2>/dev/null
-$CC -O2 -ftree-slp-vectorize -o mwe-O3 *.i $CFLAGS -fexceptions -fPIC -lm /usr/lib/libblas.so.3
-timeout 20 [ $(qemu-ppc64le ./mwe-O3 2>/dev/null; echo $?) = 139 ]
+make clean
+make TARGET=POWER8 -j8
+mkdir -p ../../usr/lib
+cp *.so ../../usr/lib
+cp libopenblas.so ../../usr/lib/libopenblas.so.0
+cd ..
+./build.sh
+cd OpenBLAS
+qemu-ppc64le ../mwe-O2
+! qemu-ppc64le ../mwe-O3
